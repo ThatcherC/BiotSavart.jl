@@ -1,5 +1,5 @@
 module BiotSavart
-export Point, Line, BfromLine, μ₀
+export Point, Line, BfromLine, BfromLines, μ₀
 
 using Cubature
 
@@ -34,6 +34,14 @@ function BfromLine(r,line,I)
 
   # (val, err) = hquadrature(3, (t,v) -> v[:] = μ₀*I/(4pi)*cross(ds_(t),r_(t))/norm(r_(t))^2, 0.0, 1.0, abstol=1e-8)
   pquadrature(3, dB, 0.0, 1.0, abstol=1e-12)
+end
+
+function BfromLines(r,lines,I)
+  function f(l)
+    (val, _) = BfromLine(r,l,I)
+    val
+  end
+  reduce(+, map(f, lines))
 end
 
 end
