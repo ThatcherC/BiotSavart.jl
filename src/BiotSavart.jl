@@ -26,10 +26,10 @@ function BfromLine(r,line,I)
   r_(t)  = [r.x, r.y, r.z] - [x(t), y(t), z(t)]
 
   #ds might be incorrect - check the docs
-  ds_(t) = [line.p1.x-line.p0.x, line.p1.y-line.p0.y, -line.p1.z-line.p0.z]
+  ds_(t) = [line.p1.x-line.p0.x, line.p1.y-line.p0.y, line.p1.z-line.p0.z]
 
   function dB(t,v)
-    v[:] = μ₀*I/(4pi)*cross(ds_(t),r_(t)) / norm(r_(t))^3
+    v[:] = μ₀*I/(4*pi)*cross(ds_(t),r_(t)) / norm(r_(t))^3
   end
 
   # (val, err) = hquadrature(3, (t,v) -> v[:] = μ₀*I/(4pi)*cross(ds_(t),r_(t))/norm(r_(t))^2, 0.0, 1.0, abstol=1e-8)
