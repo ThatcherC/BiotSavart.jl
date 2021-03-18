@@ -2,18 +2,19 @@ module BiotSavart
 export Point, Line, BfromLine, BfromLines, μ₀
 
 using Cubature
+using LinearAlgebra
 
 μ₀ = 4pi*1e-7 # Tm/A
 
 r = 0.01
 
-immutable Point
+struct Point
   x::Float64
   y::Float64
   z::Float64
 end
 
-immutable Line
+struct Line
    p0::Point
    p1::Point
 end
