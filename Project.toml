@@ -1,0 +1,8 @@
+name = "BiotSavart"
+uuid = "68957134-4491-4aff-a96b-7e675a9b4c5c"
+authors = ["Thatcher <j.thatcher.c@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Cubature = "667455a9-e2ce-5579-9412-b964f529a492"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
