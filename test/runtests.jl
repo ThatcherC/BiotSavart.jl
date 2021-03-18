@@ -1,7 +1,5 @@
-push!(LOAD_PATH, "/home/thatcher/Desktop/Projects")
-
 using BiotSavart
-using Base.Test
+using Test
 
 r = 0.01
 point = Point(0.5,r,0)
@@ -16,9 +14,9 @@ end
 
 #Tests for BfromLines
 N=200
-theta = linspace(0,2pi,N)
-x = cos(theta)
-y = sin(theta)
+theta = (1:N) * 2pi/N
+x = cos.(theta)
+y = sin.(theta)
 z = zeros(200)
 
 points = Point.(x,y,z)
